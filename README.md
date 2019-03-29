@@ -2,7 +2,7 @@
 
 A progressively enhanced `<count-down>` custom element that counts down to a specified date.
 
-[Demo](https://derekjohnson.github.io/countdown-web-component).
+[Demo](https://derekjohnson.github.io/count-down-web-component).
 
 ## Installation
 
