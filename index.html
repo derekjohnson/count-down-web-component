@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
+    <title>Countdown Web Component</title>
+    <script type="module" src="lib/countdown.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Black+Ops+One" rel="stylesheet">
+    <style>
+      :root {
+        --countdown-number-font-size: 6rem;
+        --countdown-unit-font-size: 2rem;
+      }
+
+      count-down {
+        background-image: linear-gradient(to right, hsl(180, 94%, 25%), hsl(319, 95%, 25%));
+        color: white;
+        display: block;
+        font-family: "Black Ops One", cursive;
+        padding: 2rem;
+        text-align: center;
+      }
+      
+      count-down h2 {
+        font-size: 3em;
+        margin: 0 0 1em;
+      }
+
+      count-down time {
+        font-size: 6em;
+      }
+    </style>
+  </head>
+
+  <body>
+    <count-down ends="2019-04-28" breakpoint1="25em" breakpoint2="50em">
+      <h2 slot="heading">Doors open in</h2>
+      <time>2019-04-28</time>
+    </count-down>
+  </body>
+  </html>
