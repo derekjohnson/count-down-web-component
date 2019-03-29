@@ -6,9 +6,21 @@ A progressively enhanced `<count-down>` custom element that counts down to a spe
 
 ## Installation
 
+### Self hosted
+
 Add the following to an HTML document:
 
 `<script type="module" src="path/to/countdown.js"></script>`
+
+### CDN
+
+Add the following to an HTML document:
+
+`<script type="module" src="https://unpkg.com/count-down-web-component@0.1.0/lib/countdown.js"></script>`
+
+### NPM
+
+Run `npm i count-down-web-component`.
 
 ## Usage
 
