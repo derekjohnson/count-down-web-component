@@ -1,6 +1,6 @@
 {
   "name": "count-down-web-component",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "A progressively enhanced `<count-down>` custom element that counts down to a specified date.",
   "main": "lib/countdown.js",
   "directories": {
@@ -13,7 +13,12 @@
     "type": "git",
     "url": "git+https://github.com/derekjohnson/count-down-web-component.git"
   },
-  "keywords": ["webcomponent", "custom-element", "countdown", "progressive-enhancement"],
+  "keywords": [
+    "webcomponent",
+    "custom-element",
+    "countdown",
+    "progressive-enhancement"
+  ],
   "author": "Derek Johnson",
   "license": "MIT",
   "bugs": {
