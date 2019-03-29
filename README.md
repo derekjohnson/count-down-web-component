@@ -14,7 +14,7 @@ Add the following to an HTML document:
 
 First create a `<count-down>` element with default content for users of browsers that don't support web components:
 
-```
+```html
 <count-down>
   <h2 slot="heading">Doors open in</h2>
   <time>2019-06-01</time>
@@ -25,7 +25,7 @@ If the text content of the `<time>` element isn't a [valid string](https://html.
 
 Then add attributes to control the end date of the countdown and its layout breakpoints.
 
-```
+```html
 <count-down ends="2019-06-01" breakpoint1="25em" breakpoint2="50em">
   <h2 slot="heading">Doors open in</h2>
   <time>2019-06-01</time>
@@ -34,11 +34,11 @@ Then add attributes to control the end date of the countdown and its layout brea
 
 ### Attributes
 
-*`ends`* - A date in yyyy-mm-dd format that the countdown ends on.
+**ends** - A date in yyyy-mm-dd format that the countdown ends on.
 
-*`breakpoint1`* - The days, hours, minutes and seconds are displayed in a single column CSS grid. This attribute sets the `min-width` media query where it goes to two columns.
+**breakpoint1** - The days, hours, minutes and seconds are displayed in a single column CSS grid. This attribute sets the `min-width` media query where it goes to two columns.
 
-*`breakpoint2`* - This attribute sets the `min-width` media query where the grid goes to four columns.
+**breakpoint2** - This attribute sets the `min-width` media query where the grid goes to four columns.
 
 ### Styling
 
