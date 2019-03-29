@@ -13,7 +13,7 @@
     "type": "git",
     "url": "git+https://github.com/derekjohnson/count-down-web-component.git"
   },
-  "keywords": ['webcomponent', 'custom-element', 'countdown', 'progressive-enhancement'],
+  "keywords": ["webcomponent", "custom-element", "countdown", "progressive-enhancement"],
   "author": "Derek Johnson",
   "license": "MIT",
   "bugs": {
