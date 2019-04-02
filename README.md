@@ -52,6 +52,15 @@ Then add attributes to control the end date of the countdown and its layout brea
 
 **breakpoint2** - This attribute sets the `min-width` media query where the grid goes to four columns.
 
+All attributes can be updated programatically, and the UI will update to reflect the changes.
+
+```javascript
+const clock = document.querySelector('count-down');
+clock.ends = '2022-05-10';
+clock.breakpoint1 = '100rem';
+clock.breakpoint2 = '800px';
+```
+
 ### Styling
 
 The `<count-down>` element can be styled using a universal, element, class, id or attribute selector as normal. Inherited properties will also work inside its shadow DOM e.g. `font-family` and `color`.
