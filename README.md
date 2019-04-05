@@ -46,7 +46,12 @@ Then add attributes to control the end date of the countdown and its layout brea
 
 ### Attributes
 
-**ends** - A date in yyyy-mm-dd format that the countdown ends on.
+**ends** - The date, and optional time, the countdown will end at. Must be one of the following formats from https://html.spec.whatwg.org/multipage/text-level-semantics.html#datetime-value:
+
+- valid date string
+- valid local date and time string
+- valid global date and time string
+- Four or more ASCII digits, at least one of which is not U+0030 DIGIT ZERO (0)
 
 **breakpoint1** - The days, hours, minutes and seconds are displayed in a single column CSS grid. This attribute sets the `min-width` media query where it goes to two columns.
 
