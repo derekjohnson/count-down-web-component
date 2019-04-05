@@ -11,9 +11,16 @@
       "error",
       {
         "exceptMethods": [
-          "createCountdownItem",
-          "getTimeRemaining"
+          "_createCountdownItem",
+          "_getTimeRemaining"
         ]
+      }
+    ],
+    "object-curly-newline": [
+      "error",
+      {
+        "ObjectExpression": "always",
+        "ObjectPattern": "never"
       }
     ]
   }
