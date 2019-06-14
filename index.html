@@ -7,13 +7,38 @@
   <title>Countdown Web Component</title>
   <script type="module" src="lib/countdown.js"></script>
   <link href="https://fonts.googleapis.com/css?family=Black+Ops+One" rel="stylesheet">
+  <link href="assets/style.css" rel="stylesheet">
+  <link href="assets/prism.css" rel="stylesheet">
   <style>
     :root {
       --countdown-number-font-size: 6rem;
       --countdown-unit-font-size: 2rem;
     }
 
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+    }
+
+    section {
+      border-bottom: 1px dashed gray;
+      padding-bottom: 4rem;
+      margin-bottom: 2rem;
+    }
+
     count-down {
+      display: block;
+      width: 90%;
+      margin: auto;
+    }
+
+    count-down#plain {
+      border: 1px solid;
+      padding: 2rem;
+      text-align: center;
+    }
+
+    count-down#standard {
+      background-color: hsl(180, 94%, 25%);
       background-image: linear-gradient(to right, hsl(180, 94%, 25%), hsl(319, 95%, 25%));
       color: white;
       display: block;
@@ -22,22 +47,180 @@
       text-align: center;
     }
 
-    count-down h2 {
+    count-down#standard h2 {
       font-size: 3em;
       margin: 0 0 1em;
     }
 
-    count-down time {
-      font-size: 6em;
+    count-down#custom-template {
+      background-color: black;
+      color: white;
+      display: block;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+      padding: 2rem;
     }
   </style>
 </head>
 
 <body>
-  <count-down ends="2019-04-28" breakpoint1="25em" breakpoint2="50em">
-    <h2 slot="heading">Doors open in</h2>
-    <time>2019-04-28</time>
-  </count-down>
+  <header>
+    <h1>Countdown web component</h1>
+  </header>
+
+  <main>
+    <section>
+      <h2>Out of the box</h2>
+      <p>Some basic styles in regular CSS, with the numbers' and units' sizes controlled with <code>--countdown-number-font-size</code> and <code>--countdown-unit-font-size</code>.</p>
+      <count-down id="plain" ends="2019-12-28" breakpoint1="25em" breakpoint2="50em">
+        <h2 slot="heading">Doors open in</h2>
+        <time>2019-04-28</time>
+      </count-down>
+    </section>
+
+    <section>
+      <h2>Add your own styles</h2>
+      <p>Same idea, regular CSS controls almost all of the styles.</p>
+      <count-down id="standard" ends="2019-12-28" breakpoint1="25em" breakpoint2="50em">
+        <h2 slot="heading">Doors open in</h2>
+        <time>2019-04-28</time>
+      </count-down>
+    </section>
+
+    <section>
+      <h2>Countdown using a custom template</h2>
+      <p>As long as the template has a <code>&lt;time&gt;</code> element in it you're good to go.</p>
+      <details>
+        <summary>Show markup</summary>
+        <pre>
+          <code class="language-html">
+&lt;template id=&quot;marketing&quot;&gt;
+  &lt;style&gt;
+    p {
+      font-size: 2rem;
+    }
+
+    time {
+      display: flex;
+      justify-content: space-around;
+      height: 10em;
+    }
+
+    .item:first-child {
+      align-self: flex-end;
+    }
+
+    .item:nth-child(2) {
+      align-self: center;
+    }
+
+    .item:last-child {
+      align-self: center;
+    }
+
+    .item {
+      display: flex;
+    }
+
+    .number {
+      order: 1;
+    }
+
+    .unit {
+      color: red;
+      font-size: 3rem;
+      font-weight: bold;
+    }
+  &lt;/style&gt;
+  &lt;p&gt;Leverage agile frameworks to provide a robust synopsis for high level overviews. Iterative approaches to corporate strategy foster collaborative thinking to further the overall value proposition in:&lt;/p&gt;
+  &lt;time&gt;&lt;/time&gt;
+&lt;/template&gt;
+          </code>
+        </pre>
+      </details>
+      <template id="marketing">
+        <style>
+          p {
+            font-size: 2rem;
+          }
+
+          time {
+            display: flex;
+            justify-content: space-around;
+            height: 10em;
+          }
+
+          .item:first-child {
+            align-self: flex-end;
+          }
+
+          .item:nth-child(2) {
+            align-self: center;
+          }
+
+          .item:last-child {
+            align-self: center;
+          }
+
+          .item {
+            display: flex;
+          }
+
+          .number {
+            order: 1;
+          }
+
+          .unit {
+            color: red;
+            font-size: 3rem;
+            font-weight: bold;
+          }
+        </style>
+        <p>Leverage agile frameworks to provide a robust synopsis for high level overviews. Iterative approaches to corporate strategy foster collaborative thinking to further the overall value proposition in:</p>
+        <time></time>
+      </template>
+      <count-down id="custom-template" ends="2020-01-01T08:00" template="marketing">
+        <p>Hard businessing starts on 1st Jan 2020 at 8am.</p>
+      </count-down>
+    </section>
+
+    <section>
+      <h2>Clock runs down to zeros</h2>
+      <p>This is the default behaviour. I'm going to make an optional property that takes a string for a message to take the place of the zeros.</p>
+      <count-down>
+        <time></time>
+      </count-down>
+    </section>
+  </main>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Get <count-down> elements
+      const countdowns = document.querySelectorAll('count-down');
+      // Get a date n days from now
+      function dateDaysFromNow(days) {
+        const now = Date.now();
+        const daysFromNow = 1000 * 60 * 60 * 24 * days;
+        return now + daysFromNow;
+      }
+      // Add a leading zero where necessary
+      function addLeadingZero(number) {
+        return `0${number}`.slice(-2);
+      }
+      // Format a date to yyyy-mm-dd
+      function formatDate(date) {
+        const rawDate = new Date(date);
+        return `${rawDate.getFullYear()}-${addLeadingZero(rawDate.getMonth() + 1)}-${addLeadingZero(rawDate.getDate())}T${addLeadingZero(rawDate.getHours())}:${addLeadingZero(rawDate.getMinutes())}`;
+      }
+      // Make the default countdown end 7 days from page load
+      countdowns[0].ends = formatDate(dateDaysFromNow(7));
+      // Make the styled countdowns end 10 days from page load
+      countdowns[1].ends = formatDate(dateDaysFromNow(10));
+      countdowns[2].ends = formatDate(dateDaysFromNow(10));
+      // Make the last countdown end in a few seconds
+      countdowns[3].ends = formatDate(Date.now() + 60000);
+    })
+  </script>
+  <script src="assets/prism.js"></script>
 </body>
 
 </html>
